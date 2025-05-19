@@ -1,0 +1,221 @@
+[gd_scene load_steps=19 format=3 uid="uid://b1tiped3pckcd"]
+
+[ext_resource type="Script" uid="uid://nnyr7twm7or7" path="res://AntDragAndDrop.gd" id="1_js7pq"]
+[ext_resource type="FontFile" uid="uid://b0f8cvgbdx6sy" path="res://menu/fonts/Knewave-Regular.ttf" id="4_6w02q"]
+[ext_resource type="Script" uid="uid://xi4g2tdwnnxy" path="res://game_time.gd" id="5_6w02q"]
+[ext_resource type="PackedScene" uid="uid://c26eqsji2gctm" path="res://units/minimAnt.tscn" id="5_eu7l1"]
+[ext_resource type="Texture2D" uid="uid://bp848ie3vf6l1" path="res://env/ground.png" id="5_p1v5b"]
+[ext_resource type="PackedScene" uid="uid://c8xffw1dr64op" path="res://enemies/spider.tscn" id="6_b2ar6"]
+[ext_resource type="PackedScene" uid="uid://df0lrwfaad50s" path="res://units/majorAnt.tscn" id="6_kva58"]
+[ext_resource type="PackedScene" uid="uid://fst0niwuww67" path="res://food/FoodSpawner.tscn" id="6_p1v5b"]
+[ext_resource type="PackedScene" uid="uid://cgdod4it5vw0q" path="res://enemies/spiderSpawner.tscn" id="7_ee7l0"]
+[ext_resource type="PackedScene" uid="uid://un6seql1ovbv" path="res://units/megaAnt.tscn" id="8_fvag4"]
+[ext_resource type="Script" uid="uid://d1srv4imkrgrl" path="res://units/AntSpawner.gd" id="9_ee7l0"]
+[ext_resource type="PackedScene" uid="uid://bgn1l00j1t0hp" path="res://units/ultraAnt.tscn" id="9_kva58"]
+[ext_resource type="FontFile" uid="uid://ui7fuun14sed" path="res://menu/fonts/CaveatBrush-Regular.ttf" id="11_b2ar6"]
+[ext_resource type="PackedScene" uid="uid://3gtsnmwa30vc" path="res://units/medeaAnt.tscn" id="12_b2ar6"]
+[ext_resource type="FontFile" uid="uid://bufhsttoucx2j" path="res://menu/fonts/RubikSprayPaint-Regular.ttf" id="12_ee7l0"]
+[ext_resource type="PackedScene" uid="uid://cynukapadwjua" path="res://units/queenAnt.tscn" id="16_cvq6i"]
+[ext_resource type="Script" uid="uid://bijsywr4gru7" path="res://camera_2d.gd" id="17_1fphk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_p1v5b"]
+font = ExtResource("12_ee7l0")
+font_size = 32
+font_color = Color(0.819608, 0.972549, 0.694118, 1)
+shadow_size = 7
+shadow_color = Color(0, 0, 0, 0.611765)
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_js7pq")
+
+[node name="Ground" type="Sprite2D" parent="."]
+modulate = Color(0.469243, 0.467436, 0.405253, 1)
+texture_filter = 1
+texture_repeat = 2
+scale = Vector2(10, 10)
+texture = ExtResource("5_p1v5b")
+
+[node name="FoodSpawner2" parent="." instance=ExtResource("6_p1v5b")]
+position = Vector2(351, -253)
+
+[node name="FoodSpawner" parent="." instance=ExtResource("6_p1v5b")]
+position = Vector2(-617, 268)
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="FoodScoreLabel" type="Label" parent="UI"]
+offset_left = 29.0
+offset_top = 26.0
+offset_right = 136.0
+offset_bottom = 75.0
+theme_override_fonts/font = ExtResource("11_b2ar6")
+theme_override_font_sizes/font_size = 24
+label_settings = SubResource("LabelSettings_p1v5b")
+
+[node name="Buttons" type="VBoxContainer" parent="UI"]
+custom_minimum_size = Vector2(120, 0)
+offset_left = 40.0
+offset_top = 104.0
+offset_right = 160.0
+offset_bottom = 384.0
+theme_override_constants/separation = 8
+metadata/_edit_use_anchors_ = true
+
+[node name="SpawnMinimButton" type="Button" parent="UI/Buttons"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.909804, 1, 0, 1)
+theme_override_colors/font_color = Color(0.737255, 0.886275, 0, 1)
+theme_override_colors/font_focus_color = Color(0.737255, 0.886275, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("11_b2ar6")
+theme_override_font_sizes/font_size = 28
+text = "Minim"
+
+[node name="SpawnMedeaButton" type="Button" parent="UI/Buttons"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 0.960784, 0.156863, 1)
+theme_override_colors/font_color = Color(0.902558, 0.722423, 1.54018e-06, 1)
+theme_override_colors/font_focus_color = Color(0.901961, 0.721569, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("11_b2ar6")
+theme_override_font_sizes/font_size = 28
+text = "Mediea"
+
+[node name="SpawnMajorButton" type="Button" parent="UI/Buttons"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.989093, 0.584249, 0, 1)
+theme_override_colors/font_color = Color(1, 0.458824, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0.458824, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("11_b2ar6")
+theme_override_font_sizes/font_size = 28
+text = "Major"
+
+[node name="SpawnMegaButton" type="Button" parent="UI/Buttons"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 0.333333, 0, 1)
+theme_override_colors/font_color = Color(1, 0.156863, 0.0156863, 1)
+theme_override_colors/font_focus_color = Color(1, 0.156863, 0.0156863, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("11_b2ar6")
+theme_override_font_sizes/font_size = 28
+text = "Mega
+"
+
+[node name="SpawnUltraButton" type="Button" parent="UI/Buttons"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 0.211765, 0.352941, 1)
+theme_override_colors/font_color = Color(1, 0.0156863, 0.180392, 1)
+theme_override_colors/font_focus_color = Color(1, 0.0156863, 0.180392, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("11_b2ar6")
+theme_override_font_sizes/font_size = 28
+text = "Ultra"
+
+[node name="SpawnQueenButton" type="Button" parent="UI/Buttons"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 0.262745, 0.482353, 1)
+theme_override_colors/font_color = Color(1, 0.164706, 0.388235, 1)
+theme_override_colors/font_focus_color = Color(1, 0.164706, 0.388235, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("11_b2ar6")
+theme_override_font_sizes/font_size = 28
+text = "Queen"
+
+[node name="GameTimeLabel" type="Label" parent="UI" node_paths=PackedStringArray("victory_screen")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_top = 21.0
+offset_right = 80.0
+offset_bottom = 177.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.983434, 0.603886, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.12549, 0.129412, 0.188235, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_6w02q")
+theme_override_font_sizes/font_size = 100
+text = "100"
+horizontal_alignment = 1
+script = ExtResource("5_6w02q")
+victory_screen = NodePath("../VictoryScreen")
+
+[node name="VictoryScreen" type="ColorRect" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -400.0
+offset_right = 300.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.218821, 0.329709, 0.0572643, 0.827451)
+
+[node name="RestartButton" type="Button" parent="UI/VictoryScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -163.0
+offset_right = 163.0
+offset_bottom = 113.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.435294, 0.670588, 0, 1)
+theme_override_fonts/font = ExtResource("11_b2ar6")
+theme_override_font_sizes/font_size = 76
+text = "RESTART"
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Spider" parent="Enemies" instance=ExtResource("6_b2ar6")]
+position = Vector2(557, -130)
+
+[node name="spiderSpawner" parent="Enemies" instance=ExtResource("7_ee7l0")]
+position = Vector2(540, 446)
+enemy_scene = ExtResource("6_b2ar6")
+
+[node name="AntSpawner" type="Node2D" parent="."]
+script = ExtResource("9_ee7l0")
+queen_scene = ExtResource("16_cvq6i")
+minim_scene = ExtResource("5_eu7l1")
+medea_scene = ExtResource("12_b2ar6")
+major_scene = ExtResource("6_kva58")
+mega_scene = ExtResource("8_fvag4")
+ultra_scene = ExtResource("9_kva58")
+
+[node name="QueenAnt" parent="AntSpawner" node_paths=PackedStringArray("victory_screen") instance=ExtResource("16_cvq6i")]
+victory_screen = NodePath("../../UI/VictoryScreen")
+
+[node name="minimAnt" parent="AntSpawner" instance=ExtResource("5_eu7l1")]
+position = Vector2(308, -158)
+
+[node name="MajorAnt" parent="AntSpawner" instance=ExtResource("6_kva58")]
+position = Vector2(-308, 104)
+collision_mask = 0
+
+[node name="SpawnQueenTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 5.0
+one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-5, -8)
+script = ExtResource("17_1fphk")
+
+[node name="Panel" type="Panel" parent="Camera2D"]
+modulate = Color(0.478667, 0.32, 1, 0.654902)
+offset_left = 194.0
+offset_top = 52.0
+offset_right = 234.0
+offset_bottom = 92.0
+
+[connection signal="pressed" from="UI/VictoryScreen/RestartButton" to="UI/GameTimeLabel" method="_on_restart_button_pressed"]

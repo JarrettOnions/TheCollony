@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8xffw1dr64op"]
+
+[ext_resource type="Texture2D" uid="uid://b7ek4suvs1blu" path="res://enemies/20250331 spider.png" id="1_7nthg"]
+[ext_resource type="Script" uid="uid://dks5bleyqj4uf" path="res://enemies/Enemy.gd" id="1_2178h"]
+[ext_resource type="Texture2D" uid="uid://ylkcghtx8fd6" path="res://menu/20250402 health_bar_bg.png" id="3_n5u3y"]
+[ext_resource type="Texture2D" uid="uid://c8o3qr4pxb7v" path="res://menu/20250402 health_bar.png" id="4_axe26"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2178h"]
+radius = 50.0
+
+[node name="Spider" type="CharacterBody2D" node_paths=PackedStringArray("health_bar") groups=["Enemies"]]
+z_index = 3
+script = ExtResource("1_2178h")
+health_bar = NodePath("HealthBar")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2178h")
+debug_color = Color(0, 0.646936, 0.224528, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_7nthg")
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+offset_left = -27.0
+offset_top = -79.0
+offset_right = 101.0
+offset_bottom = -39.0
+scale = Vector2(0.5, 0.5)
+value = 100.0
+texture_under = ExtResource("3_n5u3y")
+texture_progress = ExtResource("4_axe26")

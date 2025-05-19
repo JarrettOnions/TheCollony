@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=3 uid="uid://cynukapadwjua"]
+
+[ext_resource type="Script" uid="uid://cfimejji24te0" path="res://units/queen.gd" id="1_2ybbf"]
+[ext_resource type="PackedScene" uid="uid://3gtsnmwa30vc" path="res://units/medeaAnt.tscn" id="2_oihs5"]
+[ext_resource type="Texture2D" uid="uid://b5wucset3nlqc" path="res://units/queen2.png" id="2_ptjdt"]
+[ext_resource type="Texture2D" uid="uid://ylkcghtx8fd6" path="res://menu/20250402 health_bar_bg.png" id="3_d7ees"]
+[ext_resource type="PackedScene" uid="uid://c6nqhavdxmxww" path="res://food/foodItem.tscn" id="3_okomc"]
+[ext_resource type="Texture2D" uid="uid://c8o3qr4pxb7v" path="res://menu/20250402 health_bar.png" id="4_qxit5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ee7l0"]
+radius = 100.0
+
+[node name="Queen" type="CharacterBody2D" node_paths=PackedStringArray("health_bar") groups=["Ants"]]
+z_index = 3
+script = ExtResource("1_2ybbf")
+worker_scene = ExtResource("2_oihs5")
+food_scene = ExtResource("3_okomc")
+health_bar = NodePath("HealthBar")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ptjdt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -1)
+shape = SubResource("CircleShape2D_ee7l0")
+debug_color = Color(0.85867, 0.000704442, 0.878984, 0.42)
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+offset_left = -62.0
+offset_top = -193.0
+offset_right = 66.0
+offset_bottom = -161.0
+value = 100.0
+texture_under = ExtResource("3_d7ees")
+texture_progress = ExtResource("4_qxit5")

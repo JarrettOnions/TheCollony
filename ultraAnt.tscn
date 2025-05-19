@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://bgn1l00j1t0hp"]
+
+[ext_resource type="Script" uid="uid://rs2cj60sfwap" path="res://units/soldier.gd" id="1_i224f"]
+[ext_resource type="Texture2D" uid="uid://dc6vfjbpadg6o" path="res://units/ultra.png" id="2_i224f"]
+[ext_resource type="Texture2D" uid="uid://ylkcghtx8fd6" path="res://menu/20250402 health_bar_bg.png" id="3_j5poh"]
+[ext_resource type="Texture2D" uid="uid://c8o3qr4pxb7v" path="res://menu/20250402 health_bar.png" id="4_d71wf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bah7m"]
+radius = 70.0
+
+[node name="UltraAnt" type="CharacterBody2D" node_paths=PackedStringArray("health_bar") groups=["Ants"]]
+z_index = 2
+script = ExtResource("1_i224f")
+health = 800
+health_bar = NodePath("HealthBar")
+speed = 50.0
+wanderRange = 1000
+attack_damage = 70
+attack_range = 150.0
+attack_cooldown = 0.4
+detection_radius = 400.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 3
+position = Vector2(2, -50)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_i224f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bah7m")
+debug_color = Color(1, 0.00767409, 0.0475242, 0.42)
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+offset_left = -62.0
+offset_top = -195.0
+offset_right = 66.0
+offset_bottom = -155.0
+value = 100.0
+texture_under = ExtResource("3_j5poh")
+texture_progress = ExtResource("4_d71wf")

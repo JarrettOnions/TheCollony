@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgdod4it5vw0q"]
+
+[ext_resource type="Script" uid="uid://but3bovjtwtxe" path="res://enemies/spiderSpawner.gd" id="1_ist4h"]
+[ext_resource type="Texture2D" uid="uid://b7ek4suvs1blu" path="res://enemies/20250331 spider.png" id="2_v5jn8"]
+
+[node name="spiderSpawner" type="Node2D"]
+script = ExtResource("1_ist4h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_v5jn8")
+
+[node name="EnemyTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true

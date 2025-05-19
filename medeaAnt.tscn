@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://3gtsnmwa30vc"]
+
+[ext_resource type="Script" uid="uid://byjhryjtq0ql2" path="res://units/worker.gd" id="1_caqgl"]
+[ext_resource type="Texture2D" uid="uid://bpthw2cmpjvr" path="res://units/medea2.png" id="2_35n7v"]
+[ext_resource type="Texture2D" uid="uid://ylkcghtx8fd6" path="res://menu/20250402 health_bar_bg.png" id="3_im4sd"]
+[ext_resource type="Texture2D" uid="uid://c8o3qr4pxb7v" path="res://menu/20250402 health_bar.png" id="4_i0lse"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bah7m"]
+radius = 33.0
+
+[node name="MedieaAnt" type="CharacterBody2D" node_paths=PackedStringArray("health_bar") groups=["Ants"]]
+z_index = 3
+script = ExtResource("1_caqgl")
+health = 300
+health_bar = NodePath("HealthBar")
+speed = 70.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-7.10543e-15, -1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_35n7v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bah7m")
+debug_color = Color(0.682353, 0.501961, 0, 0.419608)
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+offset_left = -27.0
+offset_top = -104.0
+offset_right = 101.0
+offset_bottom = -64.0
+scale = Vector2(0.5, 0.5)
+value = 100.0
+texture_under = ExtResource("3_im4sd")
+texture_progress = ExtResource("4_i0lse")

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://fst0niwuww67"]
+
+[ext_resource type="Script" uid="uid://c3j2cjg06anfk" path="res://food/foodSpawner.gd" id="1_uiaju"]
+[ext_resource type="PackedScene" uid="uid://c6nqhavdxmxww" path="res://food/foodItem.tscn" id="2_2jd8l"]
+[ext_resource type="Texture2D" uid="uid://b8rlgo4taa3xj" path="res://food/seeder.png" id="3_2jd8l"]
+
+[node name="FoodSpawner" type="Node2D"]
+script = ExtResource("1_uiaju")
+food_scene = ExtResource("2_2jd8l")
+
+[node name="FoodTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(22, -112)
+texture = ExtResource("3_2jd8l")
